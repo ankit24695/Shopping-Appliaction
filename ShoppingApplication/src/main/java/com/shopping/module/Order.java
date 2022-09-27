@@ -1,11 +1,11 @@
 package com.shopping.module;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import javax.persistence.CascadeType;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,10 +24,10 @@ public class Order {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Customer customer;
 	
-	@OneToMany
-	private Map<Product, Integer> productlist=new HashMap<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Product> list = new ArrayList<>();
 	
-	@Embedded
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
 	public Integer getOrderId() {
@@ -62,12 +62,14 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public Map<Product, Integer> getProductlist() {
-		return productlist;
+	
+
+	public List<Product> getList() {
+		return list;
 	}
 
-	public void setProductlist(Map<Product, Integer> productlist) {
-		this.productlist = productlist;
+	public void setList(List<Product> list) {
+		this.list = list;
 	}
 
 	public Address getAddress() {

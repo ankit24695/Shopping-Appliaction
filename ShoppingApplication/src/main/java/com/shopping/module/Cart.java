@@ -1,7 +1,8 @@
 package com.shopping.module;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Cart {
@@ -18,11 +20,12 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cartId;
 	
-	@OneToOne
+	@NotNull
+	@OneToOne(cascade = CascadeType.ALL)
 	private Customer customer;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private Map<Product, Integer> products=new HashMap<>();
+	private List<Product> list = new ArrayList<>();
 
 	public Integer getCartId() {
 		return cartId;
@@ -40,13 +43,15 @@ public class Cart {
 		this.customer = customer;
 	}
 
-	public Map<Product, Integer> getProducts() {
-		return products;
+	public List<Product> getList() {
+		return list;
 	}
 
-	public void setProducts(Map<Product, Integer> products) {
-		this.products = products;
+	public void setList(List<Product> list) {
+		this.list = list;
 	}
+
+	
 	
 	
 	

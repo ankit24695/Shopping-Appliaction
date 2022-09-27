@@ -77,26 +77,6 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(color, dimension, manufacturer, price, productId, productName, quantity, specification);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		return Objects.equals(color, other.color) && Objects.equals(dimension, other.dimension)
-				&& Objects.equals(manufacturer, other.manufacturer)
-				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
-				&& Objects.equals(productId, other.productId) && Objects.equals(productName, other.productName)
-				&& Objects.equals(quantity, other.quantity) && Objects.equals(specification, other.specification);
-	}
-	
 	
 	
 	

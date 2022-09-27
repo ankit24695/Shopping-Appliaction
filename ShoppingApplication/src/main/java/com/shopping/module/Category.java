@@ -2,7 +2,7 @@ package com.shopping.module;
 
 public class Category {
 
-	private int categortId;
+	private Integer categortId;
 	private String categoryName;
 	
 	
@@ -13,7 +13,7 @@ public class Category {
 
 
 
-	public Category(int categortId, String categoryName) {
+	public Category(Integer categortId, String categoryName) {
 		super();
 		this.categortId = categortId;
 		this.categoryName = categoryName;
@@ -21,13 +21,13 @@ public class Category {
 
 
 
-	public int getCategortId() {
+	public Integer getCategortId() {
 		return categortId;
 	}
 
 
 
-	public void setCategortId(int categortId) {
+	public void setCategortId(Integer categortId) {
 		this.categortId = categortId;
 	}
 
@@ -42,6 +42,9 @@ public class Category {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+
+
+
 	
 	
 	
