@@ -6,4 +6,6 @@ import com.shopping.module.LoginData;
 
 public interface LoginDataDao extends JpaRepository<LoginData, Integer>{
 
+	public LoginData findByUserId(Integer userId);
+	
 }

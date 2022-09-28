@@ -22,6 +22,12 @@ public class CurrentUserSession {
 	private String uuid;
 	
 	private LocalDateTime localDateTime;
+	
+	
+
+	public CurrentUserSession() {
+		super();
+	}
 
 	public CurrentUserSession(Integer userId, String uuid, LocalDateTime localDateTime) {
 		super();

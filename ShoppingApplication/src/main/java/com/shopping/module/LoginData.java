@@ -1,5 +1,6 @@
 package com.shopping.module;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,13 +8,31 @@ import javax.persistence.Id;
 
 @Entity
 public class LoginData {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer loginId;
+   
+	@Column(unique = true)
     private Integer userId;
 	
 	private String userName;
 	
 	private String password;
+	
+	
+	
+
+	public LoginData() {
+		super();
+	}
+
+	public LoginData(Integer userId, String userName, String password) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+	}
 
 	public Integer getUserId() {
 		return userId;

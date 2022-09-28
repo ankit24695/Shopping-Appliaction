@@ -19,18 +19,16 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private String mobileNumber;
-	
 	@NotNull
-	@OneToOne(cascade = CascadeType.ALL)
-	private User user;
+	@Email
+	private String email;
+	@NotNull
+	private String password;
+	@NotNull
+	private String role;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
-	
-	@NotNull
-	@Email
-	@Column(unique = true)
-	private String email;
 
 	public Integer getCustomerId() {
 		return customerId;
@@ -64,12 +62,28 @@ public class Customer {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public User getUser() {
-		return user;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public Address getAddress() {
@@ -79,14 +93,9 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
+	
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	
 	
 	

@@ -49,12 +49,17 @@ public class LoginServiceImpl implements LoginService{
 			throw new LoginException("User Already login with this UserId");
 		}
 		
-		if(newCustomer.getEmail().equals(loginData.getUserName()) && newCustomer.getUser().getPassword().equals(loginData.getPassword())) {
+		if(newCustomer.getEmail().equals(loginData.getUserName()) && newCustomer.getPassword().equals(loginData.getPassword())) {
 			String key = RandomString.getRandomNumberString();
 			
 			CurrentUserSession currentUserSession = new CurrentUserSession(customerId, key, LocalDateTime.now());
 		    cusDao.save(currentUserSession);
-		    loginDao.save(loginData);
+		    
+		    LoginData logData = new LoginData();
+		    logData.setUserId(currentUserSession.getId());
+		    logData.setUserName(loginData.getUserName());
+		    logData.setPassword(loginData.getPassword());
+		    loginDao.save(logData);
 		    
 		    return currentUserSession.toString();
 		}
@@ -76,9 +81,9 @@ public class LoginServiceImpl implements LoginService{
 		
 		cusDao.delete(currentUserSession);
 		
-		Optional<LoginData> logindata = loginDao.findById(currentUserSession.getId());
+		LoginData logindata = loginDao.findByUserId(currentUserSession.getId());
 
-        loginDao.delete(logindata.get());
+        loginDao.delete(logindata);
 		
         return "Logged Out......";
 	}

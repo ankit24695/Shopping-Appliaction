@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Cart {
@@ -20,10 +18,10 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cartId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Customer customer;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Product> list = new ArrayList<>();
 
 	public Integer getCartId() {
