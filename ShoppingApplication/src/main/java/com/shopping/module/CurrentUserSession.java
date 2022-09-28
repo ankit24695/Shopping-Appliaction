@@ -61,6 +61,12 @@ public class CurrentUserSession {
 	public void setLocalDateTime(LocalDateTime localDateTime) {
 		this.localDateTime = localDateTime;
 	}
+
+	@Override
+	public String toString() {
+		return "CurrentUserSession [id=" + id + ", userId=" + userId + ", uuid=" + uuid + ", localDateTime="
+				+ localDateTime + "]";
+	}
 	
 	
 }

@@ -20,6 +20,7 @@ public class Customer {
 	private String lastName;
 	private String mobileNumber;
 	
+	@NotNull
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
