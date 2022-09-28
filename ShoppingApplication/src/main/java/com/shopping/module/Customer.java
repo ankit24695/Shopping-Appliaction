@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -26,6 +27,7 @@ public class Customer {
 	private Address address;
 	
 	@NotNull
+	@Email
 	@Column(unique = true)
 	private String email;
 
