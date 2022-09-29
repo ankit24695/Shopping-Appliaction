@@ -1,1 +1,1 @@
-# Shopping-Appliaction
+# Shopping-Application
