@@ -8,10 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "Cart")
 public class Cart {
 
 	@Id
@@ -19,11 +23,12 @@ public class Cart {
 	private Integer cartId;
 	
 	@OneToOne
+	@JoinColumn(name = "customer_id", referencedColumnName = "customerId")
 	private Customer customer;
 	
-	@OneToMany
-	private List<Product> list = new ArrayList<>();
-
+	@OneToMany(mappedBy = "cart")
+	private List<ProductDTO> list=new ArrayList<>();
+	
 	public Integer getCartId() {
 		return cartId;
 	}
@@ -40,11 +45,11 @@ public class Cart {
 		this.customer = customer;
 	}
 
-	public List<Product> getList() {
+	public List<ProductDTO> getList() {
 		return list;
 	}
 
-	public void setList(List<Product> list) {
+	public void setList(List<ProductDTO> list) {
 		this.list = list;
 	}
 
