@@ -23,6 +23,19 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
 	
+	
+	@ExceptionHandler(AddressException.class)
+	public ResponseEntity<MyErrorDetails> addressExceptionhandler(AddressException ae, WebRequest req){
+		
+		MyErrorDetails error = new MyErrorDetails();
+		error.setTimestamp(LocalDateTime.now());
+		error.setMessage(ae.getMessage());
+		error.setDetails(req.getDescription(false));
+		
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+	}
+	
+	
 	@ExceptionHandler(CustomerException.class)
 	public ResponseEntity<MyErrorDetails> customerExceptionhandler(CustomerException ce, WebRequest req){
 		
